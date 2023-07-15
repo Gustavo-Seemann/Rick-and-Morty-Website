@@ -4,22 +4,22 @@
       <div class="col">
         <img
           class="character-image"
-          src="https://rickandmortyapi.com/api/character/avatar/232.jpeg"
+          :src="characterInfo.image"
         >
       </div>
       <div class="col character-info">
         <div>
           <div style="max-width: 280px; max-height: 80px;">
             <h1>
-              Morphizer-XE Customer Support
+              {{ characterInfo.name }}
             </h1>
           </div>
           <div>
             <p
               class="text-uppercase"
-              style="color: rgb(6, 211, 6); font-weight: bold;"
+              :class="getStatusColorClass(characterInfo.status)"
             >
-              Alive
+              {{ characterInfo.status }}
             </p>
           </div>
           <div class="form-group">
@@ -31,7 +31,7 @@
               style="font-weight: 500;"
               id="exampleFormControlFile4"
             >
-              Human
+              {{ characterInfo.species }}
             </p>
           </div>
           <div class="form-group">
@@ -43,7 +43,7 @@
               style="font-weight: 500;"
               id="exampleFormControlFile1"
             >
-              Earth (Replacement Dimension)
+              {{ characterInfo.location["name"] }}
             </p>
           </div>
           <div class="form-group">
@@ -56,7 +56,7 @@
             
               id="exampleFormControlFile12"
             >
-              the whirly dirly conspiracy
+              {{ firstEpisodeName }}
             </p>
           </div>
         </div>
@@ -65,17 +65,39 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, defineProps } from 'vue';
+import axios from 'axios';
 
-export default {
-  name: "CharacterCard",
-  data() {
-    return {
-            
-    };
+const props = defineProps({
+  characterInfo: {
+    type: Object,
+    default: null
+  }
+});
+
+const firstEpisodeName = ref(null);
+
+const getFirstEpisodeSeenName = async () => {
+  try {
+    const firstEpisode = await axios.get(props.characterInfo.episode[0]);
+    firstEpisodeName.value = firstEpisode.data.name;
+  } catch (error) {
+    console.error(error);
   }
 };
 
+onMounted(getFirstEpisodeSeenName);
+
+const getStatusColorClass = (status) => {
+  if (status === "Alive") {
+    return "status-alive";
+  } else if (status === "Dead") {
+    return "status-dead";
+  } else {
+    return "status-unknown";
+  }
+};
 </script>
 
 <style scoped>
@@ -122,5 +144,21 @@ h1 {
 .col {
     overflow: hidden;
 }
+
+.status-alive {
+  color: rgb(0, 209, 0);
+  font-weight: bold;
+}
+
+.status-dead {
+  color: rgb(231, 0, 0);
+  font-weight: bold;
+}
+
+.status-unknown {
+  color: rgb(161, 161, 161);
+  font-weight: bold;
+}
+
 
 </style>
