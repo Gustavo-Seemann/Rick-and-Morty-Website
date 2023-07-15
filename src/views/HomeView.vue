@@ -42,7 +42,7 @@
         <div style="display: flex; align-items: center; justify-content: center;">
           <div>
             <h2 style="font-weight: 900; color: rgb(12, 187, 120);">
-              430
+              {{ charactersCount }}
             </h2>
             <h3 style="margin-inline: 10px;">
               Personagens
@@ -65,29 +65,83 @@
             </h3>
           </div>
         </div>
+        <div class="d-flex justify-content-center m-5">
+          <select
+            style="max-width: 150px; margin-right: 20px; border-radius: 30px; background-color: rgb(243, 241, 241);"
+            class="form-select"
+            v-model="filterOption"
+          >
+            <option value="">
+              Todos
+            </option>
+            <option value="alive">
+              Alive
+            </option>
+            <option value="dead">
+              Dead
+            </option>
+            <option value="unknown">
+              Unknown
+            </option>
+          </select>
+          <form
+            class="d-flex w-100"
+            style="max-width: 900px;"
+          >
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Pesquise um personagem..."
+              aria-label="Pesquisar"
+              v-model="searchQuery"
+              style="border-color: rgb(211, 211, 211); border-radius: 50px 0 0 50px; background-color: rgb(243, 241, 241);"
+            >
+            <button
+              class="btn btn-success px-3"
+              type="submit"
+              style="display: flex; border-radius: 0 50px 50px 0;"
+            >
+              <i class="bi bi-search" />
+            </button>
+          </form>
+        </div>
+        <!-- <div class="container"> -->
         <div
           class="row"
+          style="justify-content: center; align-items: center;"
         >
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
-          <CharacterCard />
+          <CharacterCard
+            v-for="character in allCharacters.results"
+            :key="character.id"
+            :character-info="character"
+          />
         </div>
+        <!-- </div> -->
       </div>
     </section>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script setup>
+import { ref, onMounted, computed } from 'vue';
+import axios from 'axios';
 import CharacterCard from '@/components/CharacterCard.vue';
 
-export default {
-  name: "HomeView",
-  components: {
-    CharacterCard,
-  },
+const allCharacters = ref([]);
+
+const charactersCount = computed(() => allCharacters.value.info?.count);
+
+const getAllCharacters= async () => {
+  try {
+    const response = await axios.get('https://rickandmortyapi.com/api/character');
+    console.log(response);
+    allCharacters.value = response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
+
+onMounted(getAllCharacters);
 </script>
 
 <style scoped>
