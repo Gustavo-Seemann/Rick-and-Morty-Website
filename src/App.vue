@@ -42,9 +42,4 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
-
-@font-face {
-    font-family: Rick and Morty;
-    src: url('~@/assets/fonts/rick_and_morty.ttf') format('truetype');
-}
 </style>
