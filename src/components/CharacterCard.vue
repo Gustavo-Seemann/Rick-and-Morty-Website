@@ -16,7 +16,7 @@
           </div>
           <div>
             <p
-              class="text-uppercase"
+              class="text-uppercase infoText"
               :class="getStatusColorClass(characterInfo.status)"
             >
               {{ characterInfo.status }}
@@ -29,6 +29,7 @@
             >Species</label>
             <p
               style="font-weight: 500;"
+              class="infoText"
               id="exampleFormControlFile4"
             >
               {{ characterInfo.species }}
@@ -41,6 +42,7 @@
             >Last Know Location</label>
             <p
               style="font-weight: 500;"
+              class="infoText"
               id="exampleFormControlFile1"
             >
               {{ characterInfo.location["name"] }}
@@ -53,7 +55,7 @@
             >First Seen in</label>
             <p
               style="font-weight: 500;"
-            
+              class="infoText"
               id="exampleFormControlFile12"
             >
               {{ firstEpisodeName }}
@@ -113,7 +115,7 @@ p {
 
 .container {
     max-width: 600px;
-    height: 280px;
+    max-height: 280px;
     padding: 0;
     margin: 20px;
     /* background-image: linear-gradient(135deg, #2bf37e 0%, #5bffbb 100%); */
@@ -158,6 +160,18 @@ h1 {
 .status-unknown {
   color: rgb(161, 161, 161);
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .infoText {
+    font-size: 13px;
+  }
+
 }
 
 
