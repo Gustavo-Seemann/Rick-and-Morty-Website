@@ -19,14 +19,14 @@
               class="text-uppercase infoText"
               :class="getStatusColorClass(characterInfo.status)"
             >
-              {{ characterInfo.status }}
+              {{ getStatusTranslated(characterInfo.status) }}
             </p>
           </div>
           <div class="form-group">
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
               for="exampleFormControlFile4"
-            >Species</label>
+            >Espécies</label>
             <p
               style="font-weight: 500;"
               class="infoText"
@@ -39,7 +39,7 @@
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
               for="exampleFormControlFile1"
-            >Last Know Location</label>
+            >Última localização conhecida</label>
             <p
               style="font-weight: 500;"
               class="infoText"
@@ -52,7 +52,7 @@
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
               for="exampleFormControlFile12"
-            >First Seen in</label>
+            >Visto pela primeira vez em</label>
             <p
               style="font-weight: 500;"
               class="infoText"
@@ -100,6 +100,17 @@ const getStatusColorClass = (status) => {
     return "status-unknown";
   }
 };
+
+const getStatusTranslated = (status) => {
+  if (status === "Alive") {
+    return "Vivo";
+  } else if (status === "Dead") {
+    return "Morto";
+  } else {
+    return "Desconhecido";
+  }
+};
+
 </script>
 
 <style scoped>
