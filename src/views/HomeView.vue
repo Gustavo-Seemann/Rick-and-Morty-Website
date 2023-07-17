@@ -100,7 +100,7 @@
             <button
               class="btn px-3"
               @click="searchCharacters"
-              style="display: flex; border-radius: 0 50px 50px 0; background-color: rgb(243, 241, 241)"
+              style="display: flex; border-radius: 0 50px 50px 0; background-color: rgb(243, 241, 241); justify-content: center; align-items: center;"
             >
               <span
                 v-if="isLoading"
@@ -119,28 +119,13 @@
           class="row"
           style="justify-content: center; align-items: center;"
         >
-          <div
-            v-if="!noResults"
-            class="pagination"
-          >
-            <button
-              @click="previousPage"
-              :disabled="currentPage === 1"
-              class="pagination-btn"
-            >
-              <i class="bi bi-chevron-left" />
-            </button>
-            <div class="pagination-info">
-              Página {{ currentPage }} de {{ totalPages }}
-            </div>
-            <button
-              @click="nextPage"
-              :disabled="currentPage === totalPages"
-              class="pagination-btn"
-            >
-              <i class="bi bi-chevron-right" />
-            </button>
-          </div>
+          <PaginationMenu
+            v-if="!noResults" 
+            :current-page="currentPage"
+            :total-pages="totalPages"
+            @next-page="nextPage"
+            @previous-page="previousPage"
+          />
           <CharacterCard
             v-for="character in allCharacters.results"
             :key="character.id"
@@ -153,6 +138,13 @@
           >
             <h3><strong>Nenhum resultado encontrado.</strong></h3>
           </div>
+          <PaginationMenu
+            v-if="!noResults" 
+            :current-page="currentPage"
+            :total-pages="totalPages"
+            @next-page="nextPage"
+            @previous-page="previousPage"
+          />
         </div>
       </div>
     </section>
@@ -163,6 +155,8 @@
 import { ref, onMounted, computed, watch } from 'vue';
 import axios from 'axios';
 import CharacterCard from '@/components/CharacterCard.vue';
+import PaginationMenu from '@/components/PaginationMenu.vue';
+
 
 const allCharacters = ref([]);
 const currentPage = ref(1);
@@ -297,40 +291,6 @@ onMounted(() => {
     padding-block: 50px; 
     border-top: 3px solid rgb(0, 253, 97);
   }
-
-
-  .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.pagination-btn {
-  padding: 8px;
-  font-size: 16px;
-  border: none;
-  background-color: rgb(12, 187, 120);
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.pagination-btn:hover {
-  background-color: rgb(0, 160, 110);
-}
-
-.pagination-btn:disabled {
-  background-color: rgb(211, 211, 211);
-  cursor: not-allowed;
-}
-
-.pagination-info {
-  margin: 0 10px;
-  font-size: 16px;
-  font-weight: bold;
-}
 
 .filterOptions {
   max-width: 150px; 
