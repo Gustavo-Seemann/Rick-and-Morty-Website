@@ -41,7 +41,7 @@
       >
         <div style="display: flex; justify-content: center; align-items: center;">
           <div
-            class="row"
+            class="row statsCol"
             style="max-width: 800px;"
           >
             <div class="col">
@@ -71,10 +71,9 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-center m-5">
+        <div class="row justify-content-center my-5 searchOptions">
           <select
-            style="max-width: 150px; margin-right: 20px; border-radius: 30px; background-color: rgb(243, 241, 241);"
-            class="form-select"
+            class="form-select filterOptions"
             v-model="filterOption"
           >
             <option
@@ -86,7 +85,7 @@
             </option>
           </select>
           <div
-            class="d-flex w-100"
+            class="p-0 d-flex w-100"
             style="max-width: 900px;"
           >
             <input
@@ -333,6 +332,13 @@ onMounted(() => {
   font-weight: bold;
 }
 
+.filterOptions {
+  max-width: 150px; 
+  margin-right: 20px; 
+  border-radius: 30px; 
+  background-color: rgb(243, 241, 241);
+}
+
 @media (max-width: 768px) {
   .rickmorty-img {
     max-width: 300px;
@@ -346,6 +352,20 @@ onMounted(() => {
   .subtitle {
     font-size: 16px;
     text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .searchOptions {
+    margin: 0;
+  }
+  
+  .statsCol {
+    display: block;
+  }
+
+  .filterOptions {
+    margin: 0;
+    margin-bottom: 10px;
   }
 }
 
