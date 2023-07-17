@@ -1,22 +1,9 @@
 <template>
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <div style="width: 50px;" />
-    <div style="flex: 1; text-align: center;">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <div>
       <img
         style="max-width: 150px; display: inline-block;"
         src="@/assets/images/rickMortyLogo.png"
-      >
-    </div>
-    <div>
-      <img
-        style="
-          width: 40px; 
-          height: 40px; 
-          border-radius: 50%; 
-          object-fit: cover; 
-          margin: 10px;
-          border: 1px solid rgb(94, 94, 94);"
-        src="@/assets/images/pt_BR.png"
       >
     </div>
   </div>
