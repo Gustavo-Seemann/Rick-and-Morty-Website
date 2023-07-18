@@ -1,29 +1,41 @@
-# rick-and-morty-website
+# Rick and Morty - Pesquisa de personagens!
 
-## Project setup
+![image](https://github.com/Gustavo-Seemann/Rick-and-Morty-Website/assets/101838119/587484d2-d3ed-4ba7-9c06-3149a117b375)
+
+<p align="center">
+  <a href="https://rick-morty-characters-c2ffe.web.app/">
+    <img src="https://img.shields.io/badge/site-online-brightgreen">
+  </a>
+</p> 
+
+# 💻 Sobre o projeto
+<p align="left">Projeto criado com Vue 3 utilizando Composition API.
+
+A aplicação está online e pode ser encontrada no link: [Rick and Morty - Pesquise seus personagens preferidos](https://rick-morty-characters-c2ffe.web.app/
+)
+
+A ideia do projeto consiste na construção de uma aplicação com consumindo a API de Rick and Morty para pesquisar e mostrar informações dos personagens da serie animada ao usuário.
+</p>
+
+
+# ⚙️ Instalação
+
+## Instalação do Projeto
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilação para desenvolvimento.
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilação para produção.
 ```
 npm run build
 ```
 
-### Run your end-to-end tests
+### Rodar os testes E2E.
 ```
 npm run test:e2e
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
