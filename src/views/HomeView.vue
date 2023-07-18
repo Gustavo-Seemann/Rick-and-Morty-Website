@@ -20,9 +20,7 @@
           <div class="col-auto titleDiv">
             <div style="max-width: 400px; text-align: left;">
               <h1
-                style="background-image: linear-gradient(135deg, #00cfad 0%, #00c96b 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;"
+                class="title"
               >
                 Explore o Multiverso
               </h1>
@@ -98,7 +96,7 @@
               style="border-color: rgb(211, 211, 211); border-radius: 50px 0 0 50px; background-color: rgb(243, 241, 241);"
             >
             <button
-              class="btn px-3"
+              class="btn px-3 search-btn"
               @click="searchCharacters"
               style="display: flex; border-radius: 0 50px 50px 0; background-color: rgb(243, 241, 241); justify-content: center; align-items: center;"
             >
@@ -120,6 +118,7 @@
           style="justify-content: center; align-items: center;"
         >
           <PaginationMenu
+            data-testid="paginationComp"
             v-if="!noResults" 
             :current-page="currentPage"
             :total-pages="totalPages"
@@ -127,6 +126,7 @@
             @previous-page="previousPage"
           />
           <CharacterCard
+            data-testid="characterCardComp"
             v-for="character in allCharacters.results"
             :key="character.id"
             :character-info="character"
@@ -276,6 +276,12 @@ onMounted(() => {
   h1 {
     font-size: 80px;
     font-weight: 900;
+  }
+
+  .title {
+    background-image: linear-gradient(135deg, #00cfad 0%, #00c96b 100%); 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .subtitle {

@@ -16,7 +16,7 @@
           </div>
           <div>
             <p
-              class="text-uppercase infoText"
+              class="text-uppercase infoText character-status"
               :class="getStatusColorClass(characterInfo.status)"
             >
               {{ getStatusTranslated(characterInfo.status) }}
@@ -25,12 +25,12 @@
           <div class="form-group">
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
-              for="exampleFormControlFile4"
+              for="character-species"
             >Espécies</label>
             <p
               style="font-weight: 500;"
               class="infoText"
-              id="exampleFormControlFile4"
+              id="character-species"
             >
               {{ characterInfo.species }}
             </p>
@@ -38,12 +38,12 @@
           <div class="form-group">
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
-              for="exampleFormControlFile1"
+              for="character-last-seen"
             >Última localização conhecida</label>
             <p
               style="font-weight: 500;"
               class="infoText"
-              id="exampleFormControlFile1"
+              id="character-last-seen"
             >
               {{ characterInfo.location["name"] }}
             </p>
@@ -51,12 +51,12 @@
           <div class="form-group">
             <label
               style="font-size: 13px; color: rgb(117, 117, 117);"
-              for="exampleFormControlFile12"
+              for="character-first-seen"
             >Visto pela primeira vez em</label>
             <p
               style="font-weight: 500;"
               class="infoText"
-              id="exampleFormControlFile12"
+              id="character-first-seen"
             >
               {{ firstEpisodeName }}
             </p>

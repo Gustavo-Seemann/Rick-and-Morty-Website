@@ -5,7 +5,7 @@
     <button
       @click="previousPage"
       :disabled="currentPage === 1"
-      class="pagination-btn"
+      class="pagination-btn previous-btn"
     >
       <i class="bi bi-chevron-left" />
     </button>
@@ -15,7 +15,7 @@
     <button
       @click="nextPage"
       :disabled="currentPage === totalPages"
-      class="pagination-btn"
+      class="pagination-btn next-btn"
     >
       <i class="bi bi-chevron-right" />
     </button>
