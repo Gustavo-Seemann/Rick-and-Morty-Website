@@ -1,6 +1,7 @@
 # Rick and Morty - Pesquisa de personagens!
 
-![image](https://github.com/Gustavo-Seemann/Rick-and-Morty-Website/assets/101838119/587484d2-d3ed-4ba7-9c06-3149a117b375)
+![image](https://github.com/Gustavo-Seemann/Rick-and-Morty-Website/assets/101838119/156ff066-09bf-4401-b472-b79936336812)
+
 
 <p align="center">
   <a href="https://rick-morty-characters-c2ffe.web.app/">
